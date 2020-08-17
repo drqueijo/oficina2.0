@@ -108,7 +108,8 @@ class OrcamentoController extends Controller
      */
     public function destroy($id)
     {
-        $del = ModelsOrcamentoModel::find($id)->delete();
-        return ($del)? 'sim':'não';
-}
+        $del = $orcamentos = ModelsOrcamentoModel::destroy($id);
+
+        return($del)?"sim":"não";
+    }
 }

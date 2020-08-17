@@ -6,5 +6,7 @@
             "email": "drqueijo@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "laravelcollective/html": "~5.0"
+    }
 }

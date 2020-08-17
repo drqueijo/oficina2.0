@@ -33,9 +33,9 @@
       <a href="{{url("orcamentos/$object->id/edit")}}">
         <button type="button" class="btn btn-light" style="margin-left: 3px;"> <i class="fas fa-pen"></i> Editar</button>
       </a>
-      {{ form::open(['url' => 'orcamento/' . $orcamento->id, 'method' => 'delete', 'class'=> 'form-delete'])}}
-        {{Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
-      {{Form::colse()}}
+      <a href="{{url('orcamentos/$object->id')}}" class="js-del">
+        <button type="button" class="btn btn-danger" style="margin-left: 3px;">Deletar <i class="fas fa-minus-square"></i></button>
+      </a>
       </td>
     
     </tr>
