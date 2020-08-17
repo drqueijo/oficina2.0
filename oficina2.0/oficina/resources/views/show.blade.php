@@ -16,7 +16,7 @@
     </blockquote>
   </div>
 </div>
-<a href="{{url("orcamentos")}}">
+<a href="{{url('orcamentos')}}">
         <button type="button" class="btn btn-danger mt-4"><i class="fas fa-caret-square-left"></i> Voltar</button>
       </a>
 </table>

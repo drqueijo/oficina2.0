@@ -11,7 +11,10 @@
 <body>
 <div class="p-3 mb-2 bg-dark text-white">
     @yield('content')
+    
+
 </div>  
    
 </body>
+<script src="{{url('javascript.js')}}"></script>
 </html>

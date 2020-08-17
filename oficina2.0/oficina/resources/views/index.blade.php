@@ -1,5 +1,7 @@
 @extends('templates.template')
 @section('content')
+
+@csrf
 <table class="table table-striped table-dark">
 <h2 class="text-center font-weight-bold mb-4">Orçamentos</h2>
 
@@ -20,7 +22,6 @@
   @foreach($orcamento as $object)
     
     <tr>
-      <td style="display: none;">{{$object->id}}</td>
       <th scope="row">{{$object->vendedor}}</th>
       <td>{{$object->cliente}}</td>
       <td>{{$object->valor}}</td>
@@ -29,12 +30,12 @@
       <a href="{{url("orcamentos/$object->id")}}">
         <button type="button" class="btn btn-light" style="margin-left: 3px;"><i class="fas fa-eye"></i> Visualizar</button>
       </a>
-      <a href="">
+      <a href="{{url("orcamentos/$object->id/edit")}}">
         <button type="button" class="btn btn-light" style="margin-left: 3px;"> <i class="fas fa-pen"></i> Editar</button>
       </a>
-      <a href="">
-        <button type="button" class="btn btn-danger" style="margin-left: 3px;">Deletar <i class="fas fa-minus-square"></i></button>
-      </a>
+      {{ form::open(['url' => 'orcamento/' . $orcamento->id, 'method' => 'delete', 'class'=> 'form-delete'])}}
+        {{Form::submit('Excluir', ['class' => 'btn btn-danger']) }}
+      {{Form::colse()}}
       </td>
     
     </tr>
@@ -44,6 +45,5 @@
 
 
 </table>
-
 
 @endsection

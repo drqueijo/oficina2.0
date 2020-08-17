@@ -18,7 +18,7 @@ class CreateOrcamentoModelsTable extends Migration
             $table->text('vendedor');
             $table->text('cliente');
             $table->text('descricao');
-            $table->double('valor',10,2);
+            $table->double('valor', 10,2);
             $table->timestamps();
         });
     }

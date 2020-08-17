@@ -13,7 +13,7 @@ class OrcamentoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class OrcamentoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'cliente'=>'required',
+            'vendedor'=>'required',
+            'descricao' =>'required',
+            'valor' =>'required',
         ];
     }
 }

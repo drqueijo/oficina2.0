@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrcamentoRequest;
 use Illuminate\Http\Request;
 use APP\Model\OrcamentoModel;
 use App\Models\OrcamentoModel as ModelsOrcamentoModel;
@@ -39,13 +40,13 @@ class OrcamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrcamentoRequest $request)
     {
         $cad = $orcamentos = ModelsOrcamentoModel::create([
             'cliente'=>$request->cliente,
             'vendedor'=>$request->vendedor,
             'descricao'=>$request->descricao,
-            'valor'=>$request->valor
+            'valor'=>(float)$request->valor
             
         ]);
 
@@ -74,7 +75,8 @@ class OrcamentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $orcamentos = ModelsOrcamentoModel::find($id);
+        return view ('create')->with('orcamento',$orcamentos);
     }
 
     /**
@@ -84,9 +86,18 @@ class OrcamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OrcamentoRequest $request, $id)
     {
-        //
+        $orcamentos = ModelsOrcamentoModel::where('id', $id)->update([
+            'cliente'=>$request->cliente,
+            'vendedor'=>$request->vendedor,
+            'descricao'=>$request->descricao,
+            'valor'=>$request->valor,
+            //'updated_at'=>'2020-01-01'
+        ]);
+
+        
+        return redirect('orcamentos');
     }
 
     /**
@@ -97,6 +108,7 @@ class OrcamentoController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $del = ModelsOrcamentoModel::find($id)->delete();
+        return ($del)? 'sim':'não';
+}
 }
