@@ -6,6 +6,7 @@ use App\Http\Requests\OrcamentoRequest;
 use Illuminate\Http\Request;
 use APP\Model\OrcamentoModel;
 use App\Models\OrcamentoModel as ModelsOrcamentoModel;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class OrcamentoController extends Controller
@@ -20,7 +21,8 @@ class OrcamentoController extends Controller
      */
     public function index()
     {
-        $orcamentos = ModelsOrcamentoModel::all()->sortBy('vendedor');
+      
+        $orcamentos = ModelsOrcamentoModel::paginate(5);
         return view('index')->with('orcamento',$orcamentos);
     }
 

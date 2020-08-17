@@ -42,8 +42,13 @@
  
   @endforeach
  
-
+  
+  
+  
+ 
+ 
 
 </table>
+{{$orcamento->links()}}
 
 @endsection
