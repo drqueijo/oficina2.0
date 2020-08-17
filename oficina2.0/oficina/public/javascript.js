@@ -5,13 +5,11 @@
     function confirmDel(event)
     {
         event.preventDefault();
-
-        console.log(event.target.parentNode.href)
         //console.log(event.target.parentNode.href);
         let token=doc.getElementsByName("_token")[0].value;
         if(confirm("Deseja mesmo apagar?")){
            let ajax=new XMLHttpRequest();
-           ajax.open("DELETE", event.target.parentNode.href);
+           ajax.open("DELETE",event.target.parentNode.href);
            ajax.setRequestHeader('X-CSRF-TOKEN',token);
            ajax.onreadystatechange=function(){
                if(ajax.readyState === 4 && ajax.status === 200){
